@@ -1,6 +1,26 @@
+name: Nayan-Bot
+
 on:
   push:
-    branches: [main]     # তুমি যে ব্রাঞ্চে কাজ করো
+    branches: [ main ]
   pull_request:
-    branches: [main]
-  workflow_dispatch:    # Optional — ম্যানুয়ালি চালাতেও পারবে
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Nayan-Bot
+        run: npm start
